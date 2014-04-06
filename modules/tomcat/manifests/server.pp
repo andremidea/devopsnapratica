@@ -7,7 +7,7 @@ file { "/etc/default/tomcat7":
   owner   => root,
   group   => root,
   mode    => 0644,
-  source  => "puppet://modules/tomcat/tomcat7",
+  source  => "puppet:///modules/tomcat/tomcat7",
   require => Package["tomcat7"],
   notify  => Service["tomcat7"]
 }
