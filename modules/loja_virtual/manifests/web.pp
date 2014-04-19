@@ -19,13 +19,18 @@ class loja_virtual::web {
   }
 
 
-  file { "/var/lib/tomcat7/webapps/devopsnapratica.war":
-    owner   => tomcat7,
-    group   => tomcat7,
-    mode    => 0644,
-    source  => "puppet:///modules/loja_virtual/devopsnapratica.war",
-    require => Package["tomcat7"],
-    notify  => Service["tomcat7"],
+  apt::source{ 'devopsnapratica':
+      location => 'http://192.168.33.16',
+      release => 'devopspkgs',
+      repos => 'main',
+      key   => '63DC0A3F',
+      key_source => 'http://192.168.33.16/devopspkgs.gpg',
+      include_src => false,
   }
 
+  package{ "devopsnapratica":
+      ensure => latest,
+      notify => Service["tomcat7"]
+
+  }
 }

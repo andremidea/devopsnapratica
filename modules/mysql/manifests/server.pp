@@ -23,7 +23,7 @@ class mysql::server {
 
   exec { "remove-anonymous-user":
     command => "mysql -uroot -e \"DELETE FROM mysql.user \"",
-    onlyif  => "mysql -u’ ’",
+    onlyif  => "mysql -u' '",
     path    => "/usr/bin",
     require => Service["mysql"],
   }
