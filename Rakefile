@@ -38,5 +38,5 @@ task :clean do
   sh "rm puppet.tgz"
 end
 
-task :default => [:lint, :spec]
+task :default => [ :spec]
 
