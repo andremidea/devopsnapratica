@@ -29,7 +29,7 @@ task :spec => TESTED_MODULES.map {|m| "spec:#{m}" }
 
 
 desc "Cria pacote do puppet"
-task :package => ['librarian:install', :lint, :spec] do
+task :package => ['librarian:install', :spec] do
   sh "tar czvf puppet.tgz manifests modules librarian/modules"
 end
 
